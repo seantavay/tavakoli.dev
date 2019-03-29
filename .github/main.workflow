@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["Azure Login", "Deploy to Azure"]
+  resolves = ["Azure Login", "Deploy to Web App"]
 }
 
  action "Azure Login" {
