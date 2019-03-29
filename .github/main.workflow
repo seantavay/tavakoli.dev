@@ -9,11 +9,8 @@ action "GitHub Action for Azure" {
 }
 
 action "Deploy to Azure" {
-
   uses = "./.github/actions/azure-deploy"
-
   secrets = ["AzureSecret"]
-
   env = {
     SERVICE_PRINCIPAL="Tavakoli",
     TENANT_ID="8487d561-b1c6-4299-959b-ac3c192a5a7c",
