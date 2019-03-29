@@ -13,20 +13,10 @@ action "Azure Login" {
 
 action "Deploy to Web App" {
   uses = "Azure/github-actions/webapp@master"
-  needs = ["Azure Login"]
+  needs = ["Master Push", "Azure Login"]
   env = {
     AZURE_APP_NAME = "Tavakoli"
     AZURE_APP_PACKAGE_LOCATION = "./"
-  }
-}
-
-action "Deploy to Azure" {
-  uses = "./.github/actions/azure-deploy"
-  secrets = ["AzureSecret"]
-  env = {
-    SERVICES_PRINCIPAL = "Tavakoli"
-    TENANT_ID = "8487d561-b1c6-4299-959b-ac3c192a5a7c"
-    APPID = "1187442b-49f4-4265-9e8b-2087c3476ae8"
   }
 }
 
@@ -34,6 +24,7 @@ workflow "Staging Env" {
   on = "pull_request"
   resolves = ["Deploy to Web App Test"]
 }
+
 action "Deploy to Web App Test" {
   uses = "./.github/actions/azure-deploy"
   needs = ["Azure Login"]
@@ -41,4 +32,9 @@ action "Deploy to Web App Test" {
     AZURE_APP_NAME = "TavakoliT"
     AZURE_APP_PACKAGE_LOCATION = "./"
   }
+}
+
+action "Master Push" {
+  uses = "actions/bin/filter@master"
+  args = "branch master"
 }
