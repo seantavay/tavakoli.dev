@@ -35,7 +35,7 @@ workflow "Staging Env" {
   resolves = ["Deploy to Web App Test"]
 }
 action "Deploy to Web App Test" {
-  uses = "Azure/github-actions/webapp@master"
+  uses = "./.github/actions/azure-deploy"
   needs = ["Azure Login"]
   env = {
     AZURE_APP_NAME = "TavakoliT"
