@@ -12,7 +12,7 @@ action "Deploy to Azure" {
 
   uses = "./.github/actions/azure-deploy"
 
-  secrets = ["O&%]8/?!]=9v}N(DBk1[lD!^Fva>p#{./GmE}W|"]
+  secrets = ["AzureSecret"]
 
   env = {
     SERVICE_PRINCIPAL="Tavakoli",
