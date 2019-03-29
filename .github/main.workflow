@@ -38,7 +38,7 @@ action "Deploy to Web App Test" {
   uses = "Azure/github-actions/webapp@master"
   needs = ["Azure Login"]
   env = {
-    AZURE_APP_NAME = "TavakoliTest"
+    AZURE_APP_NAME = "TavakoliT"
     AZURE_APP_PACKAGE_LOCATION = "./"
   }
 }
