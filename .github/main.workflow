@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["Azure Login"]
+  resolves = ["Azure Login", "Deploy to Azure"]
 }
 
  action "Azure Login" {
@@ -9,6 +9,15 @@ workflow "New workflow" {
     AZURE_SUBSCRIPTION = "Visual Studio Enterprise"
   }
   secrets = ["AZURE_SERVICE_APP_ID", "AZURE_SERVICE_PASSWORD", "AZURE_SERVICE_TENANT"]
+}
+
+action "Deploy to Web App" {
+  uses = "Azure/github-actions/webapp@master"
+  needs = ["Azure Login"]
+  env = {
+    AZURE_APP_NAME = "Tavakoli"
+    AZURE_APP_PACKAGE_LOCATION = "./"
+  }
 }
 
 
