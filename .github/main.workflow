@@ -8,7 +8,7 @@ workflow "New workflow" {
   env = {
     AZURE_SUBSCRIPTION = "Visual Studio Enterprise"
   }
-  secrets = ["AZURE_SERVICE_APP_ID", "AZURE_SERVICE_PASSWORD", "8487d561-b1c6-4299-959b-ac3c192a5a7c"]
+  secrets = ["AZURE_SERVICE_APP_ID", "AZURE_SERVICE_PASSWORD", "AZURE_SERVICE_TENANT"]
 }
 
 
